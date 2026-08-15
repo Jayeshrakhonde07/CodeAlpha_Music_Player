@@ -46,3 +46,24 @@ Array.from(songItems).forEach((element, i) => {
             songDuration(tempAudio.duration);
     });
 });
+
+
+// duration for master (FIXED – once only)
+audioElement.addEventListener("loadedmetadata", () => {
+    end[0].innerText = songDuration(audioElement.duration);
+});
+
+function makeAllPlay() {
+    Array.from(songItemsPlay).forEach((element) => {
+        element.classList.replace("fa-circle-pause", "fa-circle-play");
+    });
+}
+
+// FIXED ORDER (src → play)
+function allSongPlay() {
+    masterPlay.classList.replace("fa-circle-play", "fa-circle-pause");
+    audioElement.src = songs[songIndex].filePath;
+    audioElement.play();
+    masterName[0].innerText = songs[songIndex].songName;
+    gif.style.opacity = 1;
+}
