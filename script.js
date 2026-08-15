@@ -10,3 +10,17 @@ let songs = [
     { songName:"Sundari", filePath:"/Songs/Song1.mp3", coverPath:"/Images/Cover7.webp" },
     { songName:"Tum ho to", filePath:"/Songs/Song1.mp3", coverPath:"/Images/Cover8.jpeg" },
 ];
+
+// DOM Elements
+let audioElement = new Audio(songs[songIndex].filePath);
+
+let songItems = document.getElementsByClassName("songitems");
+let songItemsPlay = document.getElementsByClassName("songItemsPlay");
+let start = document.getElementsByClassName("song-start");
+let progressBar = document.getElementById("progressbar");
+let end = document.getElementsByClassName("song-end");
+let previous = document.getElementById("previous");
+let masterPlay = document.getElementById("master");
+let next = document.getElementById("next");
+let gif = document.getElementById("gif");
+let masterName = document.getElementsByClassName("song-master-title");
