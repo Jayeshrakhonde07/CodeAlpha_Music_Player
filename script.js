@@ -24,3 +24,18 @@ let masterPlay = document.getElementById("master");
 let next = document.getElementById("next");
 let gif = document.getElementById("gif");
 let masterName = document.getElementsByClassName("song-master-title");
+
+
+
+
+// Access Song UI
+Array.from(songItems).forEach((element, i) => {
+    element.getElementsByTagName("img")[0].src = songs[i].coverPath;
+    element.getElementsByClassName("song-title")[0].innerText = songs[i].songName;
+
+    let tempAudio = new Audio(songs[i].filePath);
+    tempAudio.addEventListener("loadedmetadata", () => {
+        element.getElementsByClassName("song-length")[0].innerText =
+            songDuration(tempAudio.duration);
+    });
+});
