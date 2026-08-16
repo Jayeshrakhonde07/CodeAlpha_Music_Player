@@ -127,3 +127,16 @@ audioElement.addEventListener("timeupdate", () => {
 progressBar.addEventListener("change", () => {
     audioElement.currentTime = (progressBar.value * audioElement.duration) / 100;
 });
+
+// next
+next.addEventListener("click", () => {
+    if(songIndex >= songs.length-1) {
+        songIndex = 0;
+    }
+    else {
+        songIndex ++;   // songIndex = songIndex >= songs.length - 1 ? 0 : songIndex + 1;
+    }
+    makeAllPlay();
+    allSongPlay();
+    document.getElementById(songIndex)?.classList.replace("fa-circle-play","fa-circle-pause");
+});
