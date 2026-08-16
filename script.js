@@ -99,3 +99,19 @@ Array.from(songItemsPlay).forEach((element) => {
         }
     });
 });
+
+// master play (FIXED)
+masterPlay.addEventListener("click", () => {
+    if (audioElement.paused) {
+        audioElement.play();
+        masterPlay.classList.replace("fa-circle-play", "fa-circle-pause");
+        gif.style.opacity = 1;
+        masterName[0].innerText = songs[songIndex].songName;
+        document.getElementById(songIndex)?.classList.replace("fa-circle-play","fa-circle-pause");
+    } else {
+        audioElement.pause();
+        masterPlay.classList.replace("fa-circle-pause", "fa-circle-play");
+        gif.style.opacity = 0;
+        document.getElementById(songIndex)?.classList.replace("fa-circle-pause","fa-circle-play");
+    }
+});
