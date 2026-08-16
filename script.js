@@ -128,6 +128,21 @@ progressBar.addEventListener("change", () => {
     audioElement.currentTime = (progressBar.value * audioElement.duration) / 100;
 });
 
+
+// previous
+previous.addEventListener("click", () => {
+    if(songIndex <=0) {
+        songIndex = songs.length-1;  //songIndex = songIndex <= 0 ? songs.length - 1 : songIndex - 1;
+    }
+    else {
+        songIndex --;
+    }
+    makeAllPlay();
+    allSongPlay();
+    document.getElementById(songIndex)?.classList.replace("fa-circle-play","fa-circle-pause");
+});
+
+
 // next
 next.addEventListener("click", () => {
     if(songIndex >= songs.length-1) {
@@ -140,3 +155,5 @@ next.addEventListener("click", () => {
     allSongPlay();
     document.getElementById(songIndex)?.classList.replace("fa-circle-play","fa-circle-pause");
 });
+
+
