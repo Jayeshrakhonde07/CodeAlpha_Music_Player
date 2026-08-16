@@ -115,3 +115,15 @@ masterPlay.addEventListener("click", () => {
         document.getElementById(songIndex)?.classList.replace("fa-circle-pause","fa-circle-play");
     }
 });
+
+// progress
+audioElement.addEventListener("timeupdate", () => {
+    if (!isNaN(audioElement.duration)) {
+        progressBar.value = (audioElement.currentTime / audioElement.duration) * 100;
+        start[0].innerText = songDuration(audioElement.currentTime);
+    }
+});
+
+progressBar.addEventListener("change", () => {
+    audioElement.currentTime = (progressBar.value * audioElement.duration) / 100;
+});
