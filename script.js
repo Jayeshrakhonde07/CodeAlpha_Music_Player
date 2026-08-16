@@ -67,3 +67,35 @@ function allSongPlay() {
     masterName[0].innerText = songs[songIndex].songName;
     gif.style.opacity = 1;
 }
+
+// song item play
+Array.from(songItemsPlay).forEach((element) => {
+    element.addEventListener("click", (e) => {
+        let clickIndex = parseInt(e.target.id);
+
+        if (songIndex === clickIndex) {
+            if (audioElement.paused) {
+                audioElement.play();
+                e.target.classList.replace("fa-circle-play", "fa-circle-pause");
+                masterPlay.classList.replace("fa-circle-play", "fa-circle-pause");
+                gif.style.opacity = 1;
+            } else {
+                audioElement.pause();
+                e.target.classList.replace("fa-circle-pause", "fa-circle-play");
+                masterPlay.classList.replace("fa-circle-pause", "fa-circle-play");
+                gif.style.opacity = 0;
+            }
+        } else {
+            makeAllPlay();
+            songIndex = clickIndex;
+            audioElement.src = songs[songIndex].filePath;
+            audioElement.currentTime = 0;
+            audioElement.play();
+
+            e.target.classList.replace("fa-circle-play", "fa-circle-pause");
+            masterPlay.classList.replace("fa-circle-play", "fa-circle-pause");
+            masterName[0].innerText = songs[songIndex].songName;
+            gif.style.opacity = 1;
+        }
+    });
+});
